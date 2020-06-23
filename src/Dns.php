@@ -8,11 +8,13 @@ use Symfony\Component\Process\Process;
 
 class Dns
 {
-    protected string $domain = '';
+    protected $digPath = '';
 
-    protected string $nameserver = '';
+    protected $domain = '';
 
-    protected array $recordTypes = [
+    protected $nameserver = '';
+
+    protected $recordTypes = [
         'A',
         'AAAA',
         'CNAME',
@@ -103,15 +105,17 @@ class Dns
         $nameserverPart = $this->getSpecificNameserverPart();
 
         $command = array_filter([
-            'dig',
+            $this->getDigPath() ?? 'dig',
             '+nocmd',
             $nameserverPart,
             $this->domain,
             $type,
             '+multiline',
             '+noall',
-            '+answer',
+            '+answer'
         ]);
+
+
 
         $process = new Process($command);
 
@@ -132,4 +136,22 @@ class Dns
 
         return '@'.$this->nameserver;
     }
+
+    /**
+     * @return string
+     */
+    public function getDigPath(): string {
+        return $this->digPath;
+    }
+
+    /**
+     * @param string $digPath
+     * @return Dns
+     */
+    public function setDigPath(string $digPath): Dns {
+        $this->digPath = $digPath;
+        return $this;
+    }
+
+
 }
