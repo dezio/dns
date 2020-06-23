@@ -8,7 +8,7 @@ use Symfony\Component\Process\Process;
 
 class Dns
 {
-    protected $digPath = '';
+    protected $digPath = null;
 
     protected $domain = '';
 
@@ -140,7 +140,7 @@ class Dns
     /**
      * @return string
      */
-    public function getDigPath(): string {
+    public function getDigPath() {
         return $this->digPath;
     }
 
