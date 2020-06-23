@@ -57,7 +57,12 @@ class DnsRecord implements Arrayable {
     }
 
     public function getContent() {
-        return $this->getPart(4);
+        $index = $this->getType() === "MX" ? 5 : 4;
+        $name = $this->getPart($index);
+        if (Str::endsWith($name, ".")) {
+            $name = Str::substr($name, 0, -1);
+        } // if end
+        return $name;
     }
 
     public function toArray() {
