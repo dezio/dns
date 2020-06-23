@@ -112,10 +112,9 @@ class Dns
             $type,
             '+multiline',
             '+noall',
-            '+answer'
+            '+answer',
+            '+time=1'
         ]);
-
-
 
         $process = new Process($command);
 
@@ -152,6 +151,4 @@ class Dns
         $this->digPath = $digPath;
         return $this;
     }
-
-
 }
