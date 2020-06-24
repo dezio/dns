@@ -5,9 +5,15 @@
         "spatie",
         "dns"
     ],
-    "homepage": "https://github.com/spatie/dns",
+    "homepage": "https://github.com/dezio/dns",
     "license": "MIT",
     "authors": [
+        {
+            "name": "Dennis Ziolkowski",
+            "email": "ziolkowski@prepaid-hoster.de",
+            "homepage": "https://dezio.de",
+            "role": "Developer"
+        },
         {
             "name": "Harish Toshniwal",
             "email": "harish@spatie.be",
